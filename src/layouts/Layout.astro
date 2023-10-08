@@ -1,20 +1,16 @@
----
-import Footer from "../components/Footer.astro";
----
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astronomy picture of the day</title>
+    <title>Astronomy Picture Of the Day</title>
+    <script src="../main.js"></script>
   </head>
   <body class="text-white bg-slate-800">
     <slot />
-    <Footer />
   </body>
 
   <style is:global>
@@ -26,6 +22,29 @@ import Footer from "../components/Footer.astro";
 
     body {
       font-family: "Poppins";
+    }
+
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #303030 #666464;
+    }
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: rgb(20 20 20);
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: #282828;
+      border-radius: 4px;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+      background: #303030;
     }
   </style>
 </html>
