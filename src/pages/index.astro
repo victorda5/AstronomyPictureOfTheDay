@@ -3,7 +3,7 @@ import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
-const response = await fetch("https://api.nasa.gov/planetary/apod?api_key=Oz1syckWP9dCGJAyFsECeKv4e70OYjjg3me6qNkn&date=2023-06-08")
+const response = await fetch("https://api.nasa.gov/planetary/apod?api_key=Oz1syckWP9dCGJAyFsECeKv4e70OYjjg3me6qNkn")
 const data = await response.json();
 ---
 
