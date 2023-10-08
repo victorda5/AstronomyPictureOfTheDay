@@ -1,20 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-export const getPotd = async () => {
-  const res = await fetch(
-    "https://api.nasa.gov/planetary/apod?api_key=Oz1syckWP9dCGJAyFsECeKv4e70OYjjg3me6qNkn"
-  );
-
-  const data = await res.json();
-  return data;
-};
-
-const data = await getPotd();
+const data = await fetch(
+	"https://api.nasa.gov/planetary/apod?api_key=Oz1syckWP9dCGJAyFsECeKv4e70OYjjg3me6qNkn")
+	.then(res => res.json())
 ---
 
 <Layout>
-  <main class="relative max-w-screen-md p-4 mx-auto">
+  <main class="max-w-screen-md p-4 mx-auto">
     <h1 class="text-[22px] text-left  font-bold sm:text-4xl lg:text-5xl md:mb-2 md:mt-8">
       Astronomy Picture of the day
     </h1>
@@ -25,10 +18,13 @@ const data = await getPotd();
     </h2>
       <div class="w-full overflow-hidden font-medium border-4 shadow-md border-slate-700 rounded-xl">
         <a href={data.hdurl} target="_blank">
-			<img src={data.hdurl} alt="Astronomy Picture Of the Day" />
+			<img src={data.hdurl} alt={data.title} />
         </a>
       </div>
-    <h3 class="text-sm text-center text-neutral-400 md:text-base">{data.date}</h3>
-    <p class="mt-4 font-sans antialiased font-medium font-base">{data.explanation}</p>
+    <h3 class="text-sm text-center text-neutral-400 md:text-base italic">{data.date}</h3>
+	<h2 class="mt-4 text-xl font-bold text-left lg:text-lg text-white mb-1">
+		{data.title}
+	</h2>
+    <p class="mb-4 text-sm font-semibold text-left lg:text-lg text-neutral-400">{data.explanation}</p>
   </main>
 </Layout>
