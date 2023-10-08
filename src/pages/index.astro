@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+export const getPotd = async () => {
+  const res = await fetch(
+    "https://api.nasa.gov/planetary/apod?api_key=Oz1syckWP9dCGJAyFsECeKv4e70OYjjg3me6qNkn"
+  );
+
+  const data = await res.json();
+  return data;
+};
+
+const data = await getPotd();
+---
+
+<Layout>
+  <main class="relative max-w-screen-md p-4 mx-auto">
+    <h1 class="text-[22px] text-left  font-bold sm:text-4xl lg:text-5xl md:mb-2 md:mt-8">
+      Astronomy Picture of the day
+    </h1>
+    <h2 class="mb-4 text-sm font-semibold text-left lg:text-lg text-neutral-400">
+      Discover the cosmos! Each day a different image or photograph of our
+      fascinating universe is featured, along with a brief explanation written
+      by a professional astronomer.
+    </h2>
+      <div class="w-full overflow-hidden font-medium border-4 shadow-md border-slate-700 rounded-xl">
+        <a href={data.hdurl} target="_blank">
+			<img src={data.hdurl} alt="Astronomy Picture Of the Day" />
+        </a>
+      </div>
+    <h3 class="text-sm text-center text-neutral-400 md:text-base">{data.date}</h3>
+    <p class="mt-4 font-sans antialiased font-medium font-base">{data.explanation}</p>
+  </main>
+</Layout>

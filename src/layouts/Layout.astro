@@ -1,0 +1,31 @@
+---
+import Footer from "../components/Footer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astronomy picture of the day</title>
+  </head>
+  <body class="text-white bg-slate-800">
+    <slot />
+    <Footer />
+  </body>
+
+  <style is:global>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap");
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: "Poppins";
+    }
+  </style>
+</html>
